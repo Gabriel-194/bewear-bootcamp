@@ -70,14 +70,14 @@ const SignUpForm = () => {
           router.push("/");
         },
         onError: (error) => {
-          if (error.error.code == "USER_ALREADY_EXISTS"){
+          if (error.error.code == "USER_ALREADY_EXISTS") {
             toast.error("Email ja cadastrado");
+            return form.setError("email", {
+              message: "E-mail. ja cadastrado.",
+            });
           }
-          form.setError("email",{
-            message: "E-mail. ja cadastrado.",
-          });
-        }
-        toast.error(error.error.message);
+          toast.error(error.error.message);
+        },
       },
     });
   }
